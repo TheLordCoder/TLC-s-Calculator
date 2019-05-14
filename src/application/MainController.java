@@ -227,97 +227,146 @@ public class MainController {
 			num1.setText("");
 			display.setText("");
 		} else if (event.getSource() == plus) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 1; // addition
-			num1.setText(display.getText() + " + ");
-			display.setText("");
-		} else if (event.getSource() == minus) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 2; // Subtraction
-			num1.setText(display.getText() + " - ");
-			display.setText("");
-		} else if (event.getSource() == multiplication) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 3; // Multiplication
-			num1.setText(display.getText() + " * ");
-			display.setText("");
-		} else if (event.getSource() == division) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 4; // division
-			num1.setText(display.getText() + " / ");
-			display.setText("");
-		} else if (event.getSource() == equals) {
-			secondOperand = Double.parseDouble(display.getText());
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 1; // addition
+				num1.setText(display.getText() + " + ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
 
-			switch (operation) {
-			case 1:
-				Double answer = firstOperand + secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				plusOpDone = true;
-				break;
-			case 2:
-				answer = firstOperand - secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				minusOpDone = true;
-				break;
-			case 3:
-				answer = firstOperand * secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				multiplicationOpDone = true;
-				break;
-			case 4:
-				try {
-					answer = 0D;
-					answer = firstOperand / secondOperand;
+		} else if (event.getSource() == minus) {
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 2; // Subtraction
+				num1.setText(display.getText() + " - ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
+		} else if (event.getSource() == multiplication) {
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 3; // Multiplication
+				num1.setText(display.getText() + " * ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
+		} else if (event.getSource() == division) {
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 4; // division
+				num1.setText(display.getText() + " / ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
+		} else if (event.getSource() == equals) {
+			try {
+				secondOperand = Double.parseDouble(display.getText());
+
+				switch (operation) {
+				case 1:
+					Double answer = firstOperand + secondOperand;
 					num1.setText(num1.getText() + display.getText());
 					display.setText(String.valueOf(answer));
-					divisionOpDone = true;
-				} catch (Exception e) {
-					display.setText("Error"); // if tries division with 0.
+					plusOpDone = true;
+					break;
+				case 2:
+					answer = firstOperand - secondOperand;
+					num1.setText(num1.getText() + display.getText());
+					display.setText(String.valueOf(answer));
+					minusOpDone = true;
+					break;
+				case 3:
+					answer = firstOperand * secondOperand;
+					num1.setText(num1.getText() + display.getText());
+					display.setText(String.valueOf(answer));
+					multiplicationOpDone = true;
+					break;
+				case 4:
+					try {
+						answer = 0D;
+						answer = firstOperand / secondOperand;
+						num1.setText(num1.getText() + display.getText());
+						display.setText(String.valueOf(answer));
+						divisionOpDone = true;
+					} catch (Exception e) {
+						display.setText("Error"); // if tries division with 0.
+					}
+					break;
+				case 5:
+					answer = Math.pow(firstOperand, secondOperand);
+					num1.setText(num1.getText() + display.getText());
+					display.setText(String.valueOf(answer));
+					break;
+
+				default:
+					return;
+
 				}
-				break;
-			case 5:
-				answer = Math.pow(firstOperand, secondOperand);
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				break;
-
-			default:
-				return;
-
+			} catch (Exception e) {
+				display.setText("ERROR");
 			}
 
 		} else if (event.getSource() == dot) {
 			display.setText(display.getText() + ".");
 		} else if (event.getSource() == root) {
-			Double num = Double.parseDouble(display.getText());
-			Double result = Math.sqrt(num);
-			display.setText(String.valueOf(result));
+			try {
+				Double num = Double.parseDouble(display.getText());
+				Double result = Math.sqrt(num);
+				display.setText(String.valueOf(result));
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
 		} else if (event.getSource() == clearOnlyNum2) {
 			display.setText("");
 		} else if (event.getSource() == powX2) {
-			Double num = Double.parseDouble(display.getText());
-			Double result = Math.pow(num, 2);
-			display.setText(String.valueOf(result));
+			try {
+				Double num = Double.parseDouble(display.getText());
+				Double result = Math.pow(num, 2);
+				display.setText(String.valueOf(result));
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
 		} else if (event.getSource() == powX3) {
-			Double num = Double.parseDouble(display.getText());
-			Double result = Math.pow(num, 3);
-			display.setText(String.valueOf(result));
+			try {
+				Double num = Double.parseDouble(display.getText());
+				Double result = Math.pow(num, 3);
+				display.setText(String.valueOf(result));
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
 		} else if (event.getSource() == powXY) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 5; // x^y
-			num1.setText(display.getText() + " ^ ");
-			display.setText("");
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 5; // x^y
+				num1.setText(display.getText() + " ^ ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
 		} else if (event.getSource() == deleteOneNumber) {
 			display.setText(StringUtils.chop(display.getText()));
 		} else if (event.getSource() == factorial) {
-			num1.setText("fact(" + display.getText() + ")");
-			Double num = Double.parseDouble(display.getText());
-			Double result = calculateFactorial(num);
-			display.setText(String.valueOf(result));
+			try {
+				num1.setText("fact(" + display.getText() + ")");
+				Double num = Double.parseDouble(display.getText());
+				Double result = calculateFactorial(num);
+				display.setText(String.valueOf(result));
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
 		}
 	}
 
@@ -445,62 +494,86 @@ public class MainController {
 			num1.setText("");
 			display.setText("");
 		} else if (event.getCode() == KeyCode.PLUS) {
+			try {
+
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
 			firstOperand = Double.parseDouble(display.getText());
 			operation = 1; // addition
 			num1.setText(display.getText() + " + ");
 			display.setText("");
 		} else if (event.getCode() == KeyCode.MINUS) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 2; // addition
-			num1.setText(display.getText() + " - ");
-			display.setText("");
-		} else if (event.getCode() == KeyCode.MULTIPLY) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 3; // addition
-			num1.setText(display.getText() + " * ");
-			display.setText("");
-		} else if (event.getCode() == KeyCode.DIVIDE) {
-			firstOperand = Double.parseDouble(display.getText());
-			operation = 4; // addition
-			num1.setText(display.getText() + " / ");
-			display.setText("");
-		} else if (event.getCode() == KeyCode.ENTER) {
-			secondOperand = Double.parseDouble(display.getText());
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 2; // addition
+				num1.setText(display.getText() + " - ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
 
-			switch (operation) {
-			case 1:
-				Double answer = firstOperand + secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				plusOpDone = true;
-				break;
-			case 2:
-				answer = firstOperand - secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				minusOpDone = true;
-				break;
-			case 3:
-				answer = firstOperand * secondOperand;
-				num1.setText(num1.getText() + display.getText());
-				display.setText(String.valueOf(answer));
-				multiplicationOpDone = true;
-				break;
-			case 4:
-				try {
-					answer = 0D;
-					answer = firstOperand / secondOperand;
+		} else if (event.getCode() == KeyCode.MULTIPLY) {
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 3; // addition
+				num1.setText(display.getText() + " * ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
+		} else if (event.getCode() == KeyCode.DIVIDE) {
+			try {
+				firstOperand = Double.parseDouble(display.getText());
+				operation = 4; // addition
+				num1.setText(display.getText() + " / ");
+				display.setText("");
+			} catch (Exception e) {
+				display.setText("ERROR");
+			}
+
+		} else if (event.getCode() == KeyCode.ENTER) {
+			try {
+				secondOperand = Double.parseDouble(display.getText());
+
+				switch (operation) {
+				case 1:
+					Double answer = firstOperand + secondOperand;
 					num1.setText(num1.getText() + display.getText());
 					display.setText(String.valueOf(answer));
-					divisionOpDone = true;
-				} catch (Exception e) {
-					display.setText("Error");// if tries division with 0.
+					plusOpDone = true;
+					break;
+				case 2:
+					answer = firstOperand - secondOperand;
+					num1.setText(num1.getText() + display.getText());
+					display.setText(String.valueOf(answer));
+					minusOpDone = true;
+					break;
+				case 3:
+					answer = firstOperand * secondOperand;
+					num1.setText(num1.getText() + display.getText());
+					display.setText(String.valueOf(answer));
+					multiplicationOpDone = true;
+					break;
+				case 4:
+					try {
+						answer = 0D;
+						answer = firstOperand / secondOperand;
+						num1.setText(num1.getText() + display.getText());
+						display.setText(String.valueOf(answer));
+						divisionOpDone = true;
+					} catch (Exception e) {
+						display.setText("Error");// if tries division with 0.
+					}
+					break;
+
+				default:
+					return;
+
 				}
-				break;
-
-			default:
-				return;
-
+			} catch (Exception e) {
+				display.setText("ERROR");
 			}
 		} else if (event.getCode() == KeyCode.PERIOD) {
 			display.setText(display.getText() + ".");
@@ -508,26 +581,23 @@ public class MainController {
 			display.setText(StringUtils.chop(display.getText()));
 		}
 	}
-	
+
 	@FXML
-    private void handleAboutMenuItem(ActionEvent event) {
+	private void handleAboutMenuItem(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setTitle("ABOUT");
 		alert.setHeaderText("About TLC's Calculator: ");
 		alert.setContentText("TLC's Calculator - TheLordCoder's Calculator is made using Java and JavaFX technology."
 				+ "TLC's Calculator is not prefect, about his flaws you can read more by clicking show details.\n"
-				+ "Application is free to use.\n"
-				+ "Contact: thelordcoder@gmail.com\n"
-				+ "~TheLordCoder.");
-		
+				+ "Application is free to use.\n" + "Contact: thelordcoder@gmail.com\n" + "~TheLordCoder.");
+
 		StringBuilder sb = new StringBuilder();
-		sb.append("Flaws of TLC's Calculator:\n")
-		.append("- For example it cannot calculate: 4+5*6.\n")
-		.append("-It cannot calculate precise factorial of decimal numbers.\n")
-		.append("-On keyboard where are numpads, the '+' and '-' symbol does not work, but other keys are ok.");
-		
+		sb.append("Flaws of TLC's Calculator:\n").append("- For example it cannot calculate: 4+5*6.\n")
+				.append("-It cannot calculate precise factorial of decimal numbers.\n")
+				.append("-On keyboard where are numpads, the '+' and '-' symbol does not work, but other keys are ok.");
+
 		TextArea area = new TextArea(sb.toString());
-		
+
 		DialogPane dialogPane = alert.getDialogPane();
 		dialogPane.setExpandableContent(area);
 		dialogPane.getStylesheets().add(getClass().getResource("InformationDialogTheme.css").toExternalForm());
